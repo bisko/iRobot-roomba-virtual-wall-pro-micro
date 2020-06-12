@@ -1,3 +1,12 @@
+/**
+ * Code inspiration and copied from different sources:
+ *  - https://web.archive.org/web/20200612100618/http://fcerbell.github.io/FC006iRobotRoomba660VirtualWall/
+ *    - initial understanding and attempts to run this code on Attiny85
+ *  - https://web.archive.org/web/20200612101017/https://www.gammon.com.au/forum/?id=11497
+ *    - Power consumption reduction tips for Atmega328p
+ *  - Other sources for the original `roomba_send` code still pending.
+ */
+
 /*
 Send infrared commands from the Arduino to the iRobot Roomba
 by probono
@@ -80,8 +89,6 @@ BB = Which Beam
 #include <avr/wdt.h>
 
 IRsend irsend; // hardwired to pin 0 on ATTiny85; use a transistor to drive the IR LED for maximal range
-
-int status_led = 13;
 
 void roomba_send(int code) {
     const int length = 8;
